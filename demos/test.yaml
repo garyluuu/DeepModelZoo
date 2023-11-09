@@ -1,0 +1,41 @@
+#Neural Network
+nn: CNN
+
+nnParams:
+  inFeatures: [1,16,3,1,1]  #in_channels, out_channels, kernel_size, stride, padding
+  hasParams: false
+
+#wrapper settings
+wrapper: true
+wrapperParams:
+  evolveLen: 10
+  inputMode: mvWin
+  inputFnArgs:
+    inputLen: 1
+  hasAuxiliary: fal
+
+testLen: 1000
+
+dataPath: /ehome/jiali/DeepModelZoo/murfivnet/burgers2D_scalar.npz
+  
+batchSize: 8192
+epochs: 501
+
+scheduler: ReduceLROnPlateau
+schedulerParams:
+  mode: min
+  factor: 0.5
+  patience: 20
+  verbose: true
+  threshold_mode: rel
+  cooldown: 10
+  min_lr: 1.e-6
+
+
+optimizer: Adam
+lr: 1.e-3
+
+
+printInterval: 10
+saveInterval: 50
+savePath: /storage/jiali/
